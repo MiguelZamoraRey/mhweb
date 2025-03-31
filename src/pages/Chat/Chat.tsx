@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getChatById, generateChatResponse } from '../../services/ChatService';
 import Spinner from '../../components/Spinner';
-import ReactMarkdown from 'react-markdown';
 import SendIcon from '../../components/SendIcon';
+import MarkdownRenderer from '../../components/MarkdownRenderer';
+import { EnumFromMessage } from '../../utils/generalTypes';
 
 function Chat() {
   const { id } = useParams();
@@ -12,6 +13,7 @@ function Chat() {
   const [isMsgLoading, setIsMsgLoading] = useState(false);
   const [message, setMessage] = useState('');
   const scrollEnd = useRef(null);
+  const messageContainer = useRef(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -22,25 +24,48 @@ function Chat() {
       setIsLoading(false);
     };
     getChat();
+    setTimeout(() => {
+      console.log('go to down...');
+      if (scrollEnd && scrollEnd.current) {
+        console.log(`scrollEnd exists...: ${scrollEnd.current.offsetTop}`);
+        messageContainer.current.scrollTo({
+          top: scrollEnd.current.offsetTop,
+          left: 0,
+          behavior: 'smooth',
+        });
+      }
+    }, 400);
   }, []);
 
   const handleSendMessage = () => {
     if (message && message != '') {
       setIsMsgLoading(true);
+      const tmpMessages = [...conversation];
+      tmpMessages.push({
+        from: EnumFromMessage.USER,
+        text: message,
+      });
+      setConversation(tmpMessages);
+      messageContainer.current.scrollTo({
+        top: scrollEnd.current.offsetTop,
+        left: 0,
+        behavior: 'smooth',
+      });
+
       const sendMessage = async () => {
         const response = await generateChatResponse(id, message);
         setConversation(response.updatedChat.conversation);
-        setIsMsgLoading(false);
         setMessage(null);
+        setIsMsgLoading(false);
 
         setTimeout(() => {
-          window.scrollTo({
+          messageContainer.current.scrollTo({
             top: scrollEnd.current.offsetTop,
             left: 0,
             behavior: 'smooth',
           });
           inputRef.current?.focus();
-        }, 200);
+        }, 400);
       };
       sendMessage();
     }
@@ -52,10 +77,13 @@ function Chat() {
         <Spinner />
       ) : (
         <div className="max-w-[900px] ">
-          <div className="flex  h-[10dvh] place-items-center bg-gray-800 shadow-md">
-            <h1 className="text-xl w-full">Mordheim master</h1>
+          <div className="flex h-[10dvh] place-items-center bg-gray-800 shadow-md">
+            <h1 className="text-xl w-full">Mordhio</h1>
           </div>
-          <div className="flex flex-col gap-6 h-[80dvh] overflow-y-auto p-2">
+          <div
+            ref={messageContainer}
+            className="flex flex-col gap-6 h-[80dvh] overflow-y-auto p-2"
+          >
             {conversation &&
               conversation.length > 0 &&
               conversation.map((message, index) =>
@@ -64,19 +92,19 @@ function Chat() {
                     className="flex w-full flex-row justify-start"
                     key={index}
                   >
-                    <div className="justify-start bg-green-400 text-black rounded-r-md rounded-t-md p-2 w-[80%]">
-                      <ReactMarkdown>{message.text}</ReactMarkdown>
+                    <div className="justify-start text-left bg-slate-200 text-black rounded-r-md rounded-t-md p-2 max-w-[90%]">
+                      <MarkdownRenderer content={message.text} />
                     </div>
                   </div>
                 ) : (
                   <div className="flex w-full flex-row justify-end" key={index}>
-                    <div className="justify-end bg-blue-400 text-black  rounded-l-md rounded-t-md p-2 w-[80%]">
+                    <div className="justify-end bg-blue-400 text-black  rounded-l-md rounded-t-md p-2 max-w-[90%] text-left ">
                       {message.text}
                     </div>
                   </div>
                 )
               )}
-            <div ref={scrollEnd}></div>
+            <div ref={scrollEnd} className="h-2"></div>
           </div>
           <div className="flex flex-row gap-2 h-[10dvh] bg-gray-800 ">
             {!isMsgLoading ? (
