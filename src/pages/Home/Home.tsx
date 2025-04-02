@@ -83,14 +83,14 @@ function Home() {
           >
             {error}
           </span>
-          {isRegister ? (
+          {isRegister == true ? (
             <button
               className="text-lg text-blue-200 underline"
               onClick={() => {
                 setIsRegister(false);
               }}
             >
-              ¿Aun no tienes una cuenta?
+              ¿Ya tienes una cuenta?
             </button>
           ) : (
             <button
@@ -99,7 +99,7 @@ function Home() {
                 setIsRegister(true);
               }}
             >
-              ¿Ya tienes una cuenta?
+              ¿Aun no tienes una cuenta?
             </button>
           )}
         </div>
