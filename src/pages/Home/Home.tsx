@@ -50,7 +50,7 @@ function Home() {
           <div className="flex flex-col gap-2 justify-start align-middle">
             <span className="w-20 text-start p-2">Email:</span>
             <input
-              className="p-2 rounded-md w-full bg-slate-600 border-2 border-slate-200 outline-none"
+              className="p-2 rounded-md w-full bg-[#2b2b2b] border-2 border-slate-200 outline-none"
               type="email"
               value={email}
               onChange={(e) => {
@@ -61,7 +61,7 @@ function Home() {
           <div className="flex flex-col gap-2 justify-start align-middle">
             <span className="w-20 text-start p-2">Password:</span>
             <input
-              className="p-2 rounded-md w-full bg-slate-600 border-2 border-slate-200 outline-none"
+              className="p-2 rounded-md w-full bg-[#2b2b2b] border-2 border-slate-200 outline-none"
               type="password"
               value={pass}
               onChange={(e) => {

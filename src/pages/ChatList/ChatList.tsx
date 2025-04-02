@@ -137,7 +137,7 @@ function ChatList() {
               isChatListVisible
                 ? 'flex flex-col gap-4 translate-x-0'
                 : 'w-[0vw] invisible -translate-x-full'
-            } md:visible md:translate-x-0 md:w-[20%]  z-50 md:z-auto p-4 bg-gray-600 h-[90dvh]`}
+            } md:visible md:translate-x-0 md:w-[20%]  z-50 md:z-auto p-4  h-[90dvh]`}
           >
             <h1 className="p-2 text-center text-white text-2xl">Tus chats</h1>
             <span
