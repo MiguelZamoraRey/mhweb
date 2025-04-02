@@ -119,8 +119,8 @@ function ChatList() {
 
   return (
     <div className="min-h-screen flex flex-col w-[100vw] bg-[#2b2b2b]">
-      <div className="w-full flex justify-center p-4  relative h-[10dvh]">
-        <span className="text-3xl">Mordhio</span>
+      <div className="w-full flex justify-center md:justify-start p-4  relative h-[10dvh]">
+        <span className="text-3xl md:pl-24">Mordhio</span>
         <button
           className="absolute top-4 right-4 bg-blue-400 text-white p-3 rounded-full shadow-lg md:hidden"
           onClick={() => setIsChatListVisible(!isChatListVisible)}
@@ -190,12 +190,12 @@ function ChatList() {
                   ))}
                   <div ref={scrollEnd} className="h-2"></div>
                 </div>
-                <div className="flex flex-row gap-2 h-[10vh] bg-[#353535] w-full max-w-[900px]">
+                <div className="flex flex-row gap-2 h-[10vh] bg-[#353535] w-full max-w-[900px] md:rounded-xl">
                   {!isMsgLoading ? (
                     <>
                       <textarea
                         ref={inputRef}
-                        className="resize-none w-full h-full p-2 text-sm"
+                        className="resize-none w-full h-full p-4 text-sm md:rounded-l-xl"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         onKeyDown={(e) =>
@@ -203,7 +203,7 @@ function ChatList() {
                         }
                       />
                       <div
-                        className="p-2 cursor-pointer flex place-items-center w-20"
+                        className="p-4 cursor-pointer flex place-items-center w-20"
                         onClick={handleSendMessage}
                       >
                         <SendIcon />
