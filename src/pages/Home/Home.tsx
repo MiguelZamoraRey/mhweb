@@ -45,43 +45,12 @@ function Home() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="bg-gray-600 rounded-lg flex flex-col gap-4 w-full md:w-[900px] m-h-[30dvh] p-4">
-          <div className="flex flex-row gap-6 justify-center">
-            <div className="flex flex-row gap-2">
-              <input
-                id="draft"
-                className="peer/draft"
-                type="radio"
-                name="status"
-                checked={isRegister}
-                onClick={() => {
-                  setIsRegister(true);
-                }}
-              />
-              <label className="peer-checked/draft:text-sky-500">
-                Registrarse
-              </label>
-            </div>
-            <div className="flex flex-row gap-2">
-              <input
-                id="published"
-                className="peer/published"
-                type="radio"
-                name="status"
-                onClick={() => {
-                  setIsRegister(false);
-                }}
-              />
-              <label className="peer-checked/published:text-sky-500">
-                Login
-              </label>
-            </div>
-          </div>
-
-          <div className="flex flex-row gap-8 justify-start align-middle">
+        <div className="bg-slate-600 rounded-lg flex flex-col gap-6 w-full md:w-[600px] m-h-[30dvh] p-8">
+          <h1 className="text-2xl">Mhordio</h1>
+          <div className="flex flex-col gap-2 justify-start align-middle">
             <span className="w-20 text-start p-2">Email:</span>
             <input
-              className="p-2 rounded-md"
+              className="p-2 rounded-md w-full bg-slate-600 border-2 border-slate-200 outline-none"
               type="email"
               value={email}
               onChange={(e) => {
@@ -89,10 +58,10 @@ function Home() {
               }}
             />
           </div>
-          <div className="flex flex-row gap-8 justify-start align-middle">
+          <div className="flex flex-col gap-2 justify-start align-middle">
             <span className="w-20 text-start p-2">Password:</span>
             <input
-              className="p-2 rounded-md"
+              className="p-2 rounded-md w-full bg-slate-600 border-2 border-slate-200 outline-none"
               type="password"
               value={pass}
               onChange={(e) => {
@@ -101,15 +70,11 @@ function Home() {
             />
           </div>
 
-          {/*<div className="flex flex-row gap-4 justify-between">
-              <span>User name:</span>
-              <input type="text" />
-            </div>*/}
           <button
             className="p-2 bg-slate-200 rounded-lg text-black hover:bg-slate-300"
             onClick={() => handleSendForm()}
           >
-            Entrar
+            {isRegister ? 'Registrarse' : 'Entrar'}
           </button>
           <span
             className={` ${
@@ -118,6 +83,25 @@ function Home() {
           >
             {error}
           </span>
+          {isRegister ? (
+            <button
+              className="text-lg text-blue-200 underline"
+              onClick={() => {
+                setIsRegister(false);
+              }}
+            >
+              ¿Aun no tienes una cuenta?
+            </button>
+          ) : (
+            <button
+              className="text-lg text-blue-200 underline"
+              onClick={() => {
+                setIsRegister(true);
+              }}
+            >
+              ¿Ya tienes una cuenta?
+            </button>
+          )}
         </div>
       )}
     </div>
