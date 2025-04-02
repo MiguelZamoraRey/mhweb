@@ -5,7 +5,7 @@ import 'tailwindcss/tailwind.css'; // Asegúrate de importar Tailwind CSS
 
 const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
   return (
-    <div className="markdown-body">
+    <div className="markdown-body text-left">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

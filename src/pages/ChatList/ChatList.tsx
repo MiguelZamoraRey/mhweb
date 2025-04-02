@@ -118,10 +118,9 @@ function ChatList() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col w-[100vw]">
-      <div className="w-full flex justify-center p-4 border-b-2 border-slate-200 relative h-[10dvh]">
+    <div className="min-h-screen flex flex-col w-[100vw] bg-[#2b2b2b]">
+      <div className="w-full flex justify-center p-4  relative h-[10dvh]">
         <span className="text-3xl">Mordhio</span>
-
         <button
           className="absolute top-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-lg md:hidden"
           onClick={() => setIsChatListVisible(!isChatListVisible)}
@@ -133,16 +132,16 @@ function ChatList() {
       {!isLoading ? (
         <div className="flex flex-row min-h-[90dvh]">
           <div
-            className={`md:flex md:flex-col md:gap-4 h-[90dvh] bg-gray-900 transition-transform duration-300 ease-in-out 
+            className={`md:flex md:flex-col md:gap-4 h-[90dvh] bg-[#2b2b2b] transition-transform duration-300 ease-in-out 
             ${
               isChatListVisible
                 ? 'flex flex-col gap-4 translate-x-0'
                 : 'w-[0vw] invisible -translate-x-full'
-            } md:visible md:translate-x-0 md:w-[20%] h-full z-50 md:z-auto p-4 border-r-2 border-slate-200`}
+            } md:visible md:translate-x-0 md:w-[20%]  z-50 md:z-auto p-4 bg-gray-600 h-[90dvh]`}
           >
             <h1 className="p-2 text-center text-white text-2xl">Tus chats</h1>
             <span
-              className="p-2 bg-slate-200 rounded-sm text-black cursor-pointer hover:bg-slate-100"
+              className="p-2 bg-slate-200 rounded-sm text-black cursor-pointer hover:bg-slate-100 text-2xl"
               onClick={handleCreateNewChat}
             >
               +
@@ -151,7 +150,7 @@ function ChatList() {
               <span
                 key={chat._id}
                 className={`p-2 rounded-sm cursor-pointer ${
-                  chatId === chat._id ? 'bg-slate-200' : 'text-white'
+                  chatId === chat._id ? 'bg-slate-200 text-black' : 'text-white'
                 }`}
                 onClick={() => handleSelectChat(chat._id)}
               >
@@ -169,7 +168,7 @@ function ChatList() {
               <>
                 <div
                   ref={messageContainer}
-                  className="flex flex-col gap-6 h-[80vh] overflow-y-auto p-4"
+                  className="flex flex-col gap-6 h-[80vh] overflow-y-auto p-4 "
                 >
                   {conversation.map((msg, index) => (
                     <div
@@ -181,7 +180,7 @@ function ChatList() {
                       <div
                         className={`p-2 max-w-[90%] rounded-md ${
                           msg.from === 'BOT'
-                            ? 'bg-slate-200 text-black'
+                            ? ' text-white'
                             : 'bg-blue-400 text-black'
                         }`}
                       >
@@ -191,7 +190,7 @@ function ChatList() {
                   ))}
                   <div ref={scrollEnd} className="h-2"></div>
                 </div>
-                <div className="flex flex-row gap-2 h-[10vh] bg-gray-800">
+                <div className="flex flex-row gap-2 h-[10vh] bg-[#353535]">
                   {!isMsgLoading ? (
                     <>
                       <textarea

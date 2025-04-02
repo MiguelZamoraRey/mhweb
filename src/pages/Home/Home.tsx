@@ -41,11 +41,11 @@ function Home() {
   };
 
   return (
-    <div className="min-h-[100vh] min-w-[100vw] flex flex-col items-center justify-center align-middle">
+    <div className="min-h-[100vh] min-w-[100vw] flex flex-col items-center justify-center align-middle bg-[#2b2b2b]">
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="bg-slate-600 rounded-lg flex flex-col gap-6 w-full md:w-[600px] m-h-[30dvh] p-8">
+        <div className="bg-[#353535] rounded-lg flex flex-col gap-6 w-full md:w-[600px] m-h-[30dvh] p-8">
           <h1 className="text-2xl">Mhordio</h1>
           <div className="flex flex-col gap-2 justify-start align-middle">
             <span className="w-20 text-start p-2">Email:</span>
