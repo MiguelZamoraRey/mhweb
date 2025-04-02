@@ -2,13 +2,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 import NotFound from './pages/NotFound/NotFound';
-import Chat from './pages/Chat/Chat';
+import Home from './pages/Home/Home';
+import ChatList from './pages/ChatList/ChatList';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/:id" element={<Chat />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/chats" element={<ChatList />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
