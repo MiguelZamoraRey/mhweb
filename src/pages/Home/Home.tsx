@@ -41,16 +41,16 @@ function Home() {
   };
 
   return (
-    <div className="min-h-[100vh] min-w-[100vw] flex flex-col items-center justify-center align-middle bg-[#2b2b2b]">
+    <div className="min-h-[100vh] min-w-[100vw] flex flex-col items-center justify-center align-middle bg-[#13111c]">
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="bg-[#353535] rounded-lg flex flex-col gap-6 w-full md:w-[600px] m-h-[30dvh] p-8">
+        <div className="bg-[#181622] rounded-lg flex flex-col gap-6 w-full md:w-[600px] m-h-[30dvh] p-8">
           <h1 className="text-2xl">Mhordio</h1>
           <div className="flex flex-col gap-2 justify-start align-middle">
             <span className="w-20 text-start p-2">Email:</span>
             <input
-              className="p-2 rounded-md w-full bg-[#2b2b2b] border-2 border-slate-200 outline-none"
+              className="p-2 rounded-md w-full bg-[#13111c] border-2 border-slate-200 outline-none"
               type="email"
               value={email}
               onChange={(e) => {
@@ -61,7 +61,7 @@ function Home() {
           <div className="flex flex-col gap-2 justify-start align-middle">
             <span className="w-20 text-start p-2">Password:</span>
             <input
-              className="p-2 rounded-md w-full bg-[#2b2b2b] border-2 border-slate-200 outline-none"
+              className="p-2 rounded-md w-full bg-[#13111c] border-2 border-slate-200 outline-none"
               type="password"
               value={pass}
               onChange={(e) => {

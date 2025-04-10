@@ -124,7 +124,7 @@ function ChatList() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col w-[100vw] bg-[#2b2b2b]">
+    <div className="min-h-screen flex flex-col w-[100vw] bg-[#13111c]">
       <div className="w-full flex justify-center md:justify-start p-4  relative h-[10dvh]">
         <span className="text-3xl md:pl-24">Mordhio</span>
         <button
@@ -138,7 +138,7 @@ function ChatList() {
       {!isLoading ? (
         <div className="flex flex-row min-h-[90dvh]">
           <div
-            className={`md:flex md:flex-col md:gap-2 h-[90dvh] bg-[#2b2b2b] transition-transform duration-300 ease-in-out 
+            className={`md:flex md:flex-col md:gap-2 h-[90dvh] bg-[#13111c] transition-transform duration-300 ease-in-out 
             ${
               isChatListVisible
                 ? 'flex flex-col gap-4 translate-x-0'
@@ -163,7 +163,7 @@ function ChatList() {
               <span
                 key={chat._id}
                 className={`p-2 rounded-sm cursor-pointer text-sm text-left ${
-                  chatId === chat._id ? 'bg-[#3f3f3f] ' : 'text-white'
+                  chatId === chat._id ? 'bg-[#181622] ' : 'text-white'
                 }`}
                 onClick={() => handleSelectChat(chat._id)}
               >
@@ -203,7 +203,7 @@ function ChatList() {
                   ))}
                   <div ref={scrollEnd} className="h-2"></div>
                 </div>
-                <div className="flex flex-row gap-2 h-[10vh] bg-[#353535] w-[100%] md:max-w-[900px] md:rounded-xl">
+                <div className="flex flex-row gap-2 h-[10vh] bg-[#181622] w-[100%] md:max-w-[900px] md:rounded-xl">
                   {!isMsgLoading ? (
                     <>
                       <textarea
