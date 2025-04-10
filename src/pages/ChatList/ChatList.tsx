@@ -10,6 +10,7 @@ import Spinner from '../../components/Spinner';
 import { EnumFromMessage } from '../../utils/generalTypes';
 import MarkdownRenderer from '../../components/MarkdownRenderer';
 import SendIcon from '../../components/SendIcon';
+import SleepIcon from '../../components/SleepIcon';
 
 function ChatList() {
   const [chatId, setChatId] = useState(null);
@@ -72,6 +73,11 @@ function ChatList() {
         sendMessage();
       }
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/');
   };
 
   const getChat = async (id, token) => {
@@ -139,6 +145,13 @@ function ChatList() {
                 : 'w-[0vw] invisible -translate-x-full'
             } md:visible md:translate-x-0 md:w-[20%] z-50 md:z-auto p-4 h-[90dvh]`}
           >
+            <div
+              className="flex flex-row p-2 gap-4 border-2 border-slate-200  rounded-md cursor-pointer"
+              onClick={() => handleLogout()}
+            >
+              <SleepIcon color="#ffffff" />
+              <span>Logout</span>
+            </div>
             <h1 className="p-2 text-white text-2xl text-center">Tus chats</h1>
             <span
               className="p-2 bg-slate-200 rounded-sm text-black cursor-pointer hover:bg-slate-100 text-xl"
