@@ -162,13 +162,13 @@ function ChatList() {
           <div
             className={`transition-all duration-300 ease-in-out ${
               isChatListVisible ? 'hidden' : 'w-full'
-            } md:w-[9/10] flex flex-col justify-center items-center`}
+            } md:w-[9/10] ml-[-2em] md:ml-0 flex flex-col justify-center items-center`}
           >
             {chatId ? (
               <>
                 <div
                   ref={messageContainer}
-                  className="flex flex-col gap-6 h-[80vh] overflow-y-auto p-4 max-w-[900px]"
+                  className="flex flex-col gap-6 h-[80vh] overflow-y-auto p-4 w-[100%] md:max-w-[900px] "
                 >
                   {conversation.map((msg, index) => (
                     <div
@@ -190,7 +190,7 @@ function ChatList() {
                   ))}
                   <div ref={scrollEnd} className="h-2"></div>
                 </div>
-                <div className="flex flex-row gap-2 h-[10vh] bg-[#353535] w-full max-w-[900px] md:rounded-xl">
+                <div className="flex flex-row gap-2 h-[10vh] bg-[#353535] w-[100%] md:max-w-[900px] md:rounded-xl">
                   {!isMsgLoading ? (
                     <>
                       <textarea
